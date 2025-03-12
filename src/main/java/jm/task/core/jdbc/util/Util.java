@@ -25,34 +25,6 @@ public class Util {
         }
 
     }
-
-    public static SessionFactory getSessionFactory(){
-        if (sessionFactory == null) {
-            try {
-                Configuration configuration = new Configuration();
-                configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-                configuration.setProperty("hibernate.connection.driver_class", "org.postgresql.Driver");
-                configuration.setProperty("hibernate.connection.url", "jdbc:postgresql://localhost:5432/postgres");
-                configuration.setProperty("hibernate.connection.username", "postgres");
-                configuration.setProperty("hibernate.connection.password", "vosage50");
-                configuration.setProperty("hibernate.hbm2ddl.auto", "update"); // или "create", "validate" по необходимости
-                configuration.setProperty("show_sql", "true"); // для отображения SQL-запросов в консоли
-
-                // Добавьте классы ваших сущностей, например:
-                // configuration.addAnnotatedClass(User.class);
-                System.out.println("Hibernate_Connected");
-
-                sessionFactory = configuration.buildSessionFactory();
-            } catch (Throwable ex) {
-                System.err.println("Initial SessionFactory creation failed." + ex);
-                throw new ExceptionInInitializerError(ex);
-            }
-        }
-
-        return sessionFactory;
-    }
-
-
 }
 
 
